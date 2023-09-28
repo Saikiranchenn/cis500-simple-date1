@@ -9,14 +9,14 @@
 
 
 def is_leap_year(year: int) -> bool:
-    """Return True if year is a leap year, False otherwise"""
+    """if year is a leap year then it will return as True or else it will return as false"""
     if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
         return True
     else:
         return False
 
 def ordinal_date(year: int, month: int, day: int) -> int:
-    """Return the number of days elapsed since the beginning of the year, including any partial days."""
+    """Return the number of days that have passed since the start of the year, including any partial days.."""
     # Number of days in each month (non-leap year)
     days_in_month = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
@@ -30,30 +30,55 @@ def ordinal_date(year: int, month: int, day: int) -> int:
         ordinal_date += days_in_month[i]
 
     return ordinal_date
-
-def ordinal_date(year:int , month: int, day: int) -> int:
-    """ Return the number of days elapsed since the beginning of the year, including any partial days.
-        For example, the ordinal date for 1 January is 1.
-        Hint: pre-compute the ordinal date for the first of each month."""
     
 
-def days_elapsed(year1: int, month1: int, day1: int, year2: int, month2: int, day2:int ) -> int:
-    """ Return the number of days that have elapsed between year1-month1-day1 and year2-month2-day2.
-        You may assume that year1-month1-day1 falls on or before year2-month2-day2. (In other words,
-        your answer will always be >= 0.) """
-    pass
+def is_leap_year(year: int) -> bool:
+    """Return If the year is a leap year, then it is true; otherwise, it is false."""
+    return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
 
-# This is a tuple. It is immutable so that users can't accidentally modify it.
-DAYS_OF_WEEK = ('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday')
+def days_elapsed(year1: int, month1: int, day1: int, year2: int, month2: int, day2: int) -> int:
+    """The number of days between two dates should be return.."""
+    def days_in_year(year):
+        return 366 if is_leap_year(year) else 365
+    
+    return (year2 - year1) * days_in_year(year1) + (sum(map(days_in_year, range(year1, year2))) - day1 + day2)
+
 
 def day_of_week(year: int, month: int, day: int) -> str:
-    """ Return the day of the week (Sunday, Monday, Tuesday, etc.) for the given day
-        Hint 1: 1 January 1753 was a Monday.
-        Hint 2: Use the methods you've already written."""
-    pass
+    """The day of the week (Sunday, Monday, Tuesday, etc.) for the specified day should be return."""
+    # Zeller's Congruence algorithm
+    if month < 3:
+        month += 12
+        year -= 1
+
+    k = year % 100
+    j = year // 100
+
+    day_of_week_index = (day + 13 * (month + 1) // 5 + k + k // 4 + j // 4 - 2 * j) % 7
+
+    # Days of the week
+    DAYS_OF_WEEK = ('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')
+
+    return DAYS_OF_WEEK[day_of_week_index]
+
     
 def to_str(year: int, month: int, day: int) -> str:
-    """ Return this date as string of the form "Wednesday, 07 March 1833"."""
-    pass
+    """Return the date as a string with the format "Wednesday, 07 March 1833"."""
+    # Days of the week
+    DAYS_OF_WEEK = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    
+    # Months of the year
+    MONTHS = [
+        'January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ]
+    
+    # Calculate the day of the week
+    from datetime import datetime
+    date_obj = datetime(year, month, day)
+    day_name = DAYS_OF_WEEK[date_obj.weekday()]
+    month_name = MONTHS[month - 1]
+    
+    return f"{day_name}, {day:02d} {month_name} {year}"
               
     
