@@ -1,5 +1,5 @@
 #######################################################
-# my_date
+# my_dates
 #
 # Name: zzNAMEzz (replace with your name)
 # Section: XX
