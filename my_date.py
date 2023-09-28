@@ -10,8 +10,11 @@
 
 def is_leap_year(year: int) -> bool:
     """Return True if year is a leap year, False otherwise"""
-    pass
- 
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+        return True
+    else:
+        return False
+
 def ordinal_date(year:int , month: int, day: int) -> int:
     """ Return the number of days elapsed since the beginning of the year, including any partial days.
         For example, the ordinal date for 1 January is 1.
