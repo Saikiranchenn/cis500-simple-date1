@@ -37,7 +37,7 @@ def ordinal_date(year: int, month: int, day: int) -> int:
 def days_elapsed(year1: int, month1: int, day1: int, year2: int, month2: int, day2:int ) -> int:
     import datetime
     d1 = datetime.date(year1, month1, day1)
-    d2 = datetime.date(year2, month2, day2)
+    d2 = datetime.date(year2, month2, day2) 
     d_diff = d2 - d1
     return d_diff.days
 
