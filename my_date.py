@@ -32,31 +32,22 @@ def ordinal_date(year: int, month: int, day: int) -> int:
 
     return ordinal_date
 
-    import datetime
+    
 
 def days_elapsed(year1: int, month1: int, day1: int, year2: int, month2: int, day2:int ) -> int:
-    
+    import datetime
     d1 = datetime.date(year1, month1, day1)
     d2 = datetime.date(year2, month2, day2)
     d_diff = d2 - d1
     return d_diff.days
 
+
 def day_of_week(year: int, month: int, day: int) -> str:
-    """The day of the week (Sunday, Monday, Tuesday, etc.) for the specified day should be return."""
-    # Zeller's Congruence algorithm
-    if month < 3:
-        month += 12
-        year -= 1
-
-    k = year % 100
-    j = year // 100
-
-    day_of_week_index = (day + 13 * (month + 1) // 5 + k + k // 4 + j // 4 - 2 * j) % 7
-
-    # Days of the week
-    DAYS_OF_WEEK = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
-
-    return DAYS_OF_WEEK[day_of_week_index]
+    import datetime
+    date_dt = datetime.date(year, month, day)
+    days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    day_dy = date_dt.weekday()
+    return days_of_week[day_dy]
 
 
 def to_str(year: int, month: int, day: int) -> str:
