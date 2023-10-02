@@ -24,7 +24,7 @@ class MyDateTest(unittest.TestCase):
         self.assertEqual(32, my_date.ordinal_date(1995, 2, 1))
 
     #
-    # days_elapsed  
+    # days_elapsed   
     #
  
     def test_days_elapsed1(self):
