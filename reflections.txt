@@ -1,4 +1,5 @@
 Name:  zzNAMEzz
 
-# Put your reflections here --- including reflections on 
+# first failure  : my Days_elapsed,day_of_week codes was not behaving in correct manner
+# Second failure : failed some test cases
 # any testing oversights.
