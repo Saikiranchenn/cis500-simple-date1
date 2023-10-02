@@ -1,8 +1,8 @@
 #######################################################
 # my_dates
 #
-# Name: zzNAMEzz (replace with your name)
-# Section: XX
+# Name: Sai Kiran
+# Section: 03
 #
 # Fall 2023
 #########################################################
@@ -14,6 +14,7 @@ def is_leap_year(year: int) -> bool:
         return True
     else:
         return False
+
 
 def ordinal_date(year: int, month: int, day: int) -> int:
     """Return the number of days that have passed since the start of the year, including any partial days.."""
@@ -30,17 +31,19 @@ def ordinal_date(year: int, month: int, day: int) -> int:
         ordinal_date += days_in_month[i]
 
     return ordinal_date
-    
+
 
 def is_leap_year(year: int) -> bool:
     """Return If the year is a leap year, then it is true; otherwise, it is false."""
     return (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0)
 
+
 def days_elapsed(year1: int, month1: int, day1: int, year2: int, month2: int, day2: int) -> int:
     """The number of days between two dates should be return.."""
+
     def days_in_year(year):
         return 366 if is_leap_year(year) else 365
-    
+
     return (year2 - year1) * days_in_year(year1) + (sum(map(days_in_year, range(year1, year2))) - day1 + day2)
 
 
@@ -61,24 +64,23 @@ def day_of_week(year: int, month: int, day: int) -> str:
 
     return DAYS_OF_WEEK[day_of_week_index]
 
-    
+
 def to_str(year: int, month: int, day: int) -> str:
     """Return the date as a string with the format "Wednesday, 07 March 1833"."""
     # Days of the week
     DAYS_OF_WEEK = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    
+
     # Months of the year
     MONTHS = [
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'
     ]
-    
+
     # Calculate the day of the week
     from datetime import datetime
     date_obj = datetime(year, month, day)
     day_name = DAYS_OF_WEEK[date_obj.weekday()]
     month_name = MONTHS[month - 1]
-    
+
     return f"{day_name}, {day:02d} {month_name} {year}"
-              
-    
+
